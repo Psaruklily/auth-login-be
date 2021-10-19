@@ -1,7 +1,11 @@
 const express = require('express');
-const app = express();
 const mongoose = require('mongoose');
+const dotenv = require('dotenv');
 const apiRouter = require('./router/api-router');
+
+const app = express();
+
+dotenv.config();
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
