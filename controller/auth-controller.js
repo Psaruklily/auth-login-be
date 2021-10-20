@@ -31,4 +31,18 @@ module.exports = {
         //         console.log(tokens);
         //     })
     },
+
+        refreshToken: async(req, res) => {
+        try {
+            const {user, _id} = req.tokenInfo;
+            console.log('-----', req.tokenInfo);
+            const tokens = tokenizer();
+
+            await O_Auth.findByIdAndUpdate(_id, {...tokens, user});
+
+            res.json(tokens);
+        } catch (e) {
+            res.json(e.message);
+        }
+    }
 }
